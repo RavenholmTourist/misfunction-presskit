@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Misfunction - Press Kit</title>
+<meta name="description" content="Misfunction - the card-sorting roguelike where your own brain is the enemy. Press kit: factsheet, screenshots, logo, contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #0A0812;
+    --void2: #16122E;
+    --card: #C9C3DC;
+    --ink: #241F36;
+    --dim: #8D87A8;
+    --white: #F2EFFA;
+    --pink: #FF4D8D;
+    --green: #3DDC84;
+    --blue: #4DA6FF;
+    --purple: #9D6BFF;
+    --gold: #D7B24A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--white);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--pink); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, .title-font {
+    font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+
+  .topbanner { width: 100%; max-height: 320px; overflow: hidden; border-bottom: 1px solid rgba(157,107,255,0.25); }
+  .topbanner img { width: 100%; display: block; object-fit: cover; object-position: center 45%; }
+
+  .layout { display: flex; max-width: 1280px; margin: 0 auto; }
+
+  /* ============ sidebar (presskit() left rail) ============ */
+  nav {
+    width: 250px;
+    flex-shrink: 0;
+    padding: 48px 28px 40px 36px;
+    border-right: 1px solid rgba(157,107,255,0.18);
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    max-height: 100vh;
+  }
+  nav .logo { width: 100%; max-width: 180px; display: block; }
+  nav .sub {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin: 10px 0 28px;
+  }
+  nav ul { list-style: none; }
+  nav li { margin: 7px 0; }
+  nav li a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 19px; letter-spacing: 0.08em;
+    color: var(--dim); text-decoration: none;
+    transition: color 0.12s;
+  }
+  nav li a:hover { color: var(--pink); }
+  nav .foot { margin-top: 32px; font-size: 12px; color: var(--dim); line-height: 1.7; }
+  nav .foot a { color: var(--dim); }
+  nav .foot a:hover { color: var(--white); }
+
+  /* ============ content ============ */
+  main { flex: 1; padding: 48px 48px 60px; min-width: 0; }
+  section { margin-bottom: 54px; }
+  h2 {
+    font-size: 34px; color: var(--white);
+    border-bottom: 1px solid rgba(157,107,255,0.25);
+    padding-bottom: 8px; margin-bottom: 18px;
+  }
+  h3 { font-size: 22px; color: var(--pink); margin: 22px 0 8px; }
+  p { max-width: 68ch; }
+  p + p { margin-top: 10px; }
+  .muted { color: var(--dim); }
+  ul.feature { list-style: none; margin-top: 6px; }
+  ul.feature li { padding-left: 20px; position: relative; margin: 6px 0; }
+  ul.feature li::before {
+    content: ''; position: absolute; left: 0; top: 0.62em;
+    width: 8px; height: 8px; border-radius: 2px;
+    background: var(--purple); transform: rotate(45deg);
+  }
+
+  /* factsheet - definition list like classic presskit */
+  .facts dt {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--pink); margin-top: 14px;
+  }
+  .facts dd { margin: 2px 0 0 0; color: var(--white); }
+
+  /* video rows */
+  .vid { margin: 10px 0; }
+  .vid .dl { font-size: 13px; color: var(--dim); }
+  .vid .dl a { color: var(--dim); margin-left: 8px; }
+
+  /* screenshot grid */
+  .shot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 14px; }
+  .shot-grid a { display: block; border: 1px solid rgba(157,107,255,0.3); border-radius: 8px; overflow: hidden; }
+  .shot-grid img { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+  .shot-grid a:hover { border-color: var(--pink); }
+  .zipline { margin: 14px 0 18px; }
+
+  /* logo row */
+  .logo-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px; }
+  .logo-row figure {
+    background: var(--void2); border: 1px solid rgba(157,107,255,0.3);
+    border-radius: 10px; padding: 18px; text-align: center;
+  }
+  .logo-row img { max-width: 220px; max-height: 160px; display: block; }
+  .logo-row figcaption { font-size: 12px; color: var(--dim); margin-top: 10px; }
+
+  /* boilerplate / contact blocks */
+  .block {
+    background: var(--void2);
+    border: 1px solid rgba(157,107,255,0.22);
+    border-radius: 12px; padding: 20px 22px; margin-top: 12px;
+  }
+  .block .k { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+
+  /* signup */
+  .signup {
+    background: var(--void2);
+    border: 1px solid rgba(255,77,141,0.4);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 0 40px rgba(255,77,141,0.08);
+    max-width: 620px;
+  }
+  .signup form { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .signup input[type="email"] {
+    flex: 1; min-width: 200px;
+    background: var(--void);
+    border: 1px solid rgba(157,107,255,0.4);
+    border-radius: 8px;
+    color: var(--white); font-size: 14px;
+    padding: 11px 14px; outline: none;
+  }
+  .signup input[type="email"]:focus { border-color: var(--pink); }
+  .signup button {
+    border: none; cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em;
+    background: var(--pink); color: var(--white);
+    border-radius: 8px; padding: 10px 24px 8px;
+  }
+  .signup small { display: block; margin-top: 12px; color: var(--dim); font-size: 12px; }
+
+  footer { color: var(--dim); font-size: 12px; padding: 30px 0 20px; border-top: 1px solid rgba(157,107,255,0.12); }
+  footer a { color: var(--dim); }
+
+  @media (max-width: 860px) {
+    .layout { flex-direction: column; }
+    nav {
+      width: 100%; max-height: none; position: static;
+      padding: 28px 24px; border-right: none; border-bottom: 1px solid rgba(157,107,255,0.18);
+    }
+    nav ul { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    main { padding: 32px 24px 50px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbanner">
+  <img src="screenshots/banner.png" alt="Misfunction - title card over a mosaic of gameplay captures">
+</header>
+
+<div class="layout">
+
+<nav>
+  <img class="logo" src="screenshots/logo_stacked_white.png" alt="MISFUNCTION wordmark">
+  <div class="sub">Press Kit</div>
+  <ul>
+    <li><a href="#factsheet">Factsheet</a></li>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#images">Screenshots</a></li>
+    <li><a href="#logo">Logo &amp; Icon</a></li>
+    <li><a href="#about">About the Dev</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#signup">Launch List</a></li>
+  </ul>
+  <div class="foot">
+    Playable now on <a href="https://wins-ki.itch.io/misfunction">itch.io</a><br>
+    Press contact: <a href="mailto:misfunctiongame@gmail.com">misfunctiongame@gmail.com</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="factsheet">
+  <h2>Factsheet</h2>
+  <dl class="facts">
+    <dt>Developer</dt>
+    <dd>Thomas Winski (solo) - Dunfermline, Scotland</dd>
+    <dt>Status</dt>
+    <dd>Feature-complete core, final art pass in progress</dd>
+    <dt>Release date</dt>
+    <dd>Targeting Q1-Q2 2027 (estimate - sequence is firm)</dd>
+    <dt>Platforms</dt>
+    <dd>Android first (portrait). iOS + PC/Steam planned</dd>
+    <dt>Model</dt>
+    <dd>Premium - no ads, no IAP, no subscriptions</dd>
+    <dt>Genre</dt>
+    <dd>Puzzle roguelike / cognitive-interference card sorter</dd>
+    <dt>Engine</dt>
+    <dd>Godot 4.5</dd>
+    <dt>Website</dt>
+    <dd><a href="https://wins-ki.itch.io/misfunction">wins-ki.itch.io/misfunction</a></dd>
+    <dt>Playable now</dt>
+    <dd>Prototype builds + devlogs on itch.io; press APK on request</dd>
+  </dl>
+</section>
+
+<section id="description">
+  <h2>Description</h2>
+  <p>Misfunction is a card-sorting roguelike built on the Stroop effect - the psychology
+    experiment where a colour word printed in the wrong ink breaks your brain for a second.
+    Swipe each card in the right direction before the timer drains. Simple, until the rule
+    changes: follow the ink, follow the word, swipe the opposite, find the one word hiding
+    in a grid of liars.</p>
+  <p>The mechanic is pre-installed - everyone has seen the Stroop test, as a meme if not a
+    lab. Sort the card. Ignore the word. Trust the ink. Now do it 60 times while the rules
+    keep changing and the timer keeps shrinking.</p>
+</section>
+
+<section id="history">
+  <h2>History</h2>
+  <h3>Built by the person who'd normally be finding its bugs</h3>
+  <p>Thomas Winski spent seven-plus years in QA leadership at Build A Rocket Boy (AAA title),
+    finishing as QA Manager over ~60 internal staff and ~70 external testers. Before games he
+    was a professional UX researcher and ergonomics research scientist, MSc Engineering
+    Psychology. Misfunction is a solo build - design, AI-assisted code, art direction - backed
+    by an automated test harness that plays full runs headless through every mode, boss and
+    menu. The test harness isn't an accident.</p>
+  <h3>A game about lying labels</h3>
+  <p>Every boss wears a mortal name at Tier 1. At Tier 2 the name is spelled backwards - the
+    same moment your controls invert. Beat Tier 3 and the boss unmasks a true name:
+    VERRE becomes ERREV becomes something older. The whole game is misidentified things; the
+    bosses are the joke taken seriously.</p>
+  <h3>Public development</h3>
+  <p>Development has been public from the bare-metal prototype onward - build history and
+    devlogs live at <a href="https://wins-ki.itch.io/misfunction">the itch page</a>.</p>
+</section>
+
+<section id="features">
+  <h2>Features</h2>
+  <ul class="feature">
+    <li>9 rules, every one a real cognitive-interference experiment: Stroop, Eriksen Flanker, negative priming, Simon effect, visual search</li>
+    <li>4 modes - Rogue Sort (the 60-round campaign), Endless Sort, Daily Sort, Boss Rush - plus timed Bonus Rounds that fund the modifier shop</li>
+    <li>Daily Sort: one attempt a day, same cards for everyone on Earth, per-day global leaderboard, branded share image (PNG + animated GIF) - every share is a free ad with a challenge attached</li>
+    <li>~60 draftable modifiers and 7 unlockable traits - chaos picks, stabilisers, or pay to skip</li>
+    <li>5 named bosses x 3 tiers: rule twists, inverted controls, and experimental variants - orbital letter rings, teleporting word grids, a 10x10 wordsearch</li>
+    <li>Customisable hit VFX - 7 unlockable strike styles won from bosses (Eris' Chorus, Athena's Verdict, Arachne's Thread, Apep's Coil)</li>
+    <li>Every correct swipe answers with a lightning strike; misses lash back in dark arcs; rounds replay as slow-motion cinematics</li>
+    <li>Global leaderboards on every mode + offline score queue + delete-scores privacy controls</li>
+    <li>Multi-profile saves, mid-run checkpoints, unlock notifications, collection browser</li>
+    <li>Built like a shipped product: 30+ automated verification suites with per-screen capture</li>
+  </ul>
+</section>
+
+<section id="videos">
+  <h2>Videos</h2>
+  <div class="vid">
+    <strong>Trailer</strong> - in production. <span class="dl">This page gets the link the day it exists; ask for raw capture clips in the meantime.</span>
+  </div>
+</section>
+
+<section id="images">
+  <h2>Screenshots</h2>
+  <p class="zipline"><a href="screenshots.zip">download all screenshots &amp; logos as .zip</a></p>
+  <p class="muted" style="font-size:13px;">Pre-final-art-pass captures. Final assets in progress - re-shoots on request.</p>
+  <div class="shot-grid">
+    <a href="screenshots/hero_stroop.png"><img src="screenshots/hero_stroop.png" alt="Card reading GREEN in pink ink" loading="lazy"></a>
+    <a href="screenshots/strike_lightning.png"><img src="screenshots/strike_lightning.png" alt="Lightning strike hit effect" loading="lazy"></a>
+    <a href="screenshots/bonus_cluster.png"><img src="screenshots/bonus_cluster.png" alt="Bonus Round mini-card cluster" loading="lazy"></a>
+    <a href="screenshots/boss_fight.png"><img src="screenshots/boss_fight.png" alt="Boss encounter" loading="lazy"></a>
+    <a href="screenshots/strike_bullet.png"><img src="screenshots/strike_bullet.png" alt="Bullet Strike effect" loading="lazy"></a>
+    <a href="screenshots/daily_result.png"><img src="screenshots/daily_result.png" alt="Daily Sort result screen" loading="lazy"></a>
+    <a href="screenshots/rule_gate.png"><img src="screenshots/rule_gate.png" alt="Rule gate card" loading="lazy"></a>
+    <a href="screenshots/home_modes.png"><img src="screenshots/home_modes.png" alt="Home mode select" loading="lazy"></a>
+  </div>
+</section>
+
+<section id="logo">
+  <h2>Logo &amp; Icon</h2>
+  <p class="zipline">Included in <a href="screenshots.zip">the .zip</a> - or right-click any version below.</p>
+  <div class="logo-row">
+    <figure><img src="screenshots/logo_stacked_white.png" alt="MIS/FUN/CTION stacked lockup, white"><figcaption>Stacked lockup - white</figcaption></figure>
+    <figure><img src="screenshots/logo_stacked_pink.png" alt="MIS/FUN/CTION stacked lockup, pink"><figcaption>Stacked lockup - pink</figcaption></figure>
+    <figure><img src="screenshots/logo_horizontal_white.png" alt="MISFUNCTION horizontal wordmark, white"><figcaption>Horizontal - white</figcaption></figure>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About the Developer</h2>
+  <div class="block">
+    <div class="k">Boilerplate</div>
+    <p style="margin-top:8px;">Thomas Winski is a solo developer based in Dunfermline, Scotland.
+      A former AAA QA leader and human-factors researcher, he built Misfunction alone in Godot -
+      design, AI-assisted code, and art direction - applying a researcher's eye to a game about
+      how brains fail under pressure.</p>
+  </div>
+  <div class="block">
+    <div class="k">AI disclosure</div>
+    <p style="margin-top:8px;">Misfunction was developed solo with AI-assisted programming in
+      Godot 4.5. Design, rules, art direction and all testing are the developer's own work.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="block">
+    <div class="k">Press contact</div>
+    <p style="margin-top:8px;">Thomas Winski - <a href="mailto:misfunctiongame@gmail.com">misfunctiongame@gmail.com</a><br>
+    Web - <a href="https://wins-ki.itch.io/misfunction">wins-ki.itch.io/misfunction</a><br>
+    Playable build - press APK on request, prototype builds on itch.io<br>
+    Pitch deck, fact sheet and full screenshot set available on request.</p>
+  </div>
+</section>
+
+<section id="signup">
+  <h2>Launch List</h2>
+  <div class="signup">
+    <p>Launch announcements, a devlog when something big ships, nothing else.
+      Maybe 4-6 emails a year. No spam, unsubscribe any time.</p>
+    <!--
+      EMAIL SIGNUP - Buttondown embed.
+      1. Create a free account at https://buttondown.com (free to 100 subscribers)
+      2. Replace MISFUNCTION-LIST-NAME below with your Buttondown username (appears twice)
+      3. Done - submissions go straight into your Buttondown list
+    -->
+    <form action="https://buttondown.com/api/emails/embed-subscribe/MISFUNCTION-LIST-NAME"
+          method="post" target="popupwindow"
+          onsubmit="window.open('https://buttondown.com/MISFUNCTION-LIST-NAME','popupwindow')">
+      <input type="email" name="email" placeholder="you@example.com" required>
+      <button type="submit">Sign up</button>
+    </form>
+    <small>Powered by Buttondown. Or
+      <a href="mailto:misfunctiongame@gmail.com?subject=Misfunction%20-%20keep%20me%20posted">email Thomas</a>
+      and he'll add you manually.</small>
+  </div>
+</section>
+
+<footer>
+  <p>MISFUNCTION - a game by Thomas Winski, Scotland. All screenshots are real captures.
+    Press material may be reproduced for coverage of the game.</p>
+</footer>
+
+</main>
+</div>
+
+</body>
+</html>
