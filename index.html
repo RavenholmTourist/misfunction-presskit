@@ -45,7 +45,7 @@
   .phoneframe { width: 240px; border: 2px solid rgba(157,107,255,0.55); border-radius: 18px;
     overflow: hidden; box-shadow: 0 0 28px rgba(157,107,255,0.25), 0 0 6px rgba(255,77,141,0.2);
     background: #0a0a14; }
-  .phoneframe img { width: 100%; display: block; }
+  .phoneframe img, .phoneframe video { width: 100%; display: block; }
   .vidcap { font-size: 0.8rem; color: #8f8fa8; margin-top: 0.6rem; letter-spacing: 0.03em; }
   .topbanner { width: 100%; max-height: 320px; overflow: hidden; border-bottom: 1px solid rgba(157,107,255,0.25); }
   .topbanner img { width: 100%; display: block; object-fit: cover; object-position: center 45%; }
@@ -211,9 +211,10 @@
 
 <section id="video-hero">
   <div class="phoneframe">
-    <img src="screenshots/daily_run.gif" alt="Daily Sort gameplay - swiping cards under the timer">
+    <video src="screenshots/daily_run.mp4" autoplay muted loop playsinline
+           poster="screenshots/hero_stroop.png" aria-label="Endless Sort gameplay - swiping cards under the timer"></video>
   </div>
-  <p class="vidcap">Daily Sort, live capture. Portrait, exactly as it plays on a phone.</p>
+  <p class="vidcap">Endless Sort, live capture. Portrait, exactly as it plays on a phone.</p>
 </section>
 
 <section id="description">
