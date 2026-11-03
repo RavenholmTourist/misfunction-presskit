@@ -41,6 +41,12 @@
     line-height: 1.05;
   }
 
+  #video-hero { display: flex; flex-direction: column; align-items: center; }
+  .phoneframe { width: 240px; border: 2px solid rgba(157,107,255,0.55); border-radius: 18px;
+    overflow: hidden; box-shadow: 0 0 28px rgba(157,107,255,0.25), 0 0 6px rgba(255,77,141,0.2);
+    background: #0a0a14; }
+  .phoneframe img { width: 100%; display: block; }
+  .vidcap { font-size: 0.8rem; color: #8f8fa8; margin-top: 0.6rem; letter-spacing: 0.03em; }
   .topbanner { width: 100%; max-height: 320px; overflow: hidden; border-bottom: 1px solid rgba(157,107,255,0.25); }
   .topbanner img { width: 100%; display: block; object-fit: cover; object-position: center 45%; }
 
@@ -184,8 +190,8 @@
   <img class="logo" src="screenshots/logo_stacked_white.png" alt="MISFUNCTION wordmark">
   <div class="sub">Press Kit</div>
   <ul>
-    <li><a href="#factsheet">Factsheet</a></li>
     <li><a href="#description">Description</a></li>
+    <li><a href="#factsheet">Factsheet</a></li>
     <li><a href="#history">History</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#videos">Videos</a></li>
@@ -202,6 +208,25 @@
 </nav>
 
 <main>
+
+<section id="video-hero">
+  <div class="phoneframe">
+    <img src="screenshots/daily_run.gif" alt="Daily Sort gameplay - swiping cards under the timer">
+  </div>
+  <p class="vidcap">Daily Sort, live capture. Portrait, exactly as it plays on a phone.</p>
+</section>
+
+<section id="description">
+  <h2>Description</h2>
+  <p>Misfunction is a card-sorting roguelike built on the Stroop effect - the psychology
+    experiment where a colour word printed in the wrong ink breaks your brain for a second.
+    Swipe each card in the right direction before the timer drains. Simple, until the rule
+    changes: follow the ink, follow the word, swipe the opposite, find the one word hiding
+    in a grid of liars.</p>
+  <p>The mechanic is pre-installed - everyone has seen the Stroop test, as a meme if not a
+    lab. Sort the card. Ignore the word. Trust the ink. Now do it 60 times while the rules
+    keep changing and the timer keeps shrinking.</p>
+</section>
 
 <section id="factsheet">
   <h2>Factsheet</h2>
@@ -227,17 +252,6 @@
   </dl>
 </section>
 
-<section id="description">
-  <h2>Description</h2>
-  <p>Misfunction is a card-sorting roguelike built on the Stroop effect - the psychology
-    experiment where a colour word printed in the wrong ink breaks your brain for a second.
-    Swipe each card in the right direction before the timer drains. Simple, until the rule
-    changes: follow the ink, follow the word, swipe the opposite, find the one word hiding
-    in a grid of liars.</p>
-  <p>The mechanic is pre-installed - everyone has seen the Stroop test, as a meme if not a
-    lab. Sort the card. Ignore the word. Trust the ink. Now do it 60 times while the rules
-    keep changing and the timer keeps shrinking.</p>
-</section>
 
 <section id="history">
   <h2>History</h2>
@@ -248,11 +262,11 @@
     Psychology. Misfunction is a solo build - design, AI-assisted code, art direction - backed
     by an automated test harness that plays full runs headless through every mode, boss and
     menu. The test harness isn't an accident.</p>
-  <h3>A game about lying labels</h3>
-  <p>Every boss wears a mortal name at Tier 1. At Tier 2 the name is spelled backwards - the
-    same moment your controls invert. Beat Tier 3 and the boss unmasks a true name:
-    VERRE becomes ERREV becomes something older. The whole game is misidentified things; the
-    bosses are the joke taken seriously.</p>
+  <h3>The name is the tell</h3>
+  <p>Every boss has three names, one per tier. Tier 1 shows a mortal name. Tier 2 spells it
+    backwards - and inverts your controls, so the name itself is the warning. Clear Tier 3
+    and the mask comes off: the boss's true name is revealed. VERRE. ERREV. Then something
+    older.</p>
   <h3>Public development</h3>
   <p>Development has been public from the bare-metal prototype onward - build history and
     devlogs live at <a href="https://wins-ki.itch.io/misfunction">the itch page</a>.</p>
